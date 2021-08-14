@@ -38,7 +38,7 @@ Foram criadas algumas funções para facilitar a manutenção do processo e simp
 
 **Parâmetros**: Recebe uma string e retorna um flooat
 
-**gera_json**: Função para gerar um arquivo json da coleta realizada no site [webscraper.io] ( https://webscraper.io/test-sites/e-commerce/allinone/computers/laptops ) no diretório base do projeto, para facilitar o consumo dos dados por uma REST API Ful.
+**gera_json**: Função para gerar um arquivo json da coleta realizada no site [webscraper.io]( https://webscraper.io/test-sites/e-commerce/allinone/computers/laptops ) no diretório base do projeto, para facilitar o consumo dos dados por uma REST API Ful.
 
 **Parâmetros**: Recebe o caminho completo do arquivo, um dicionário, inteiro para definir a quantidade de indentação do json.
 
