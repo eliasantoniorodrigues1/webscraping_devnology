@@ -36,18 +36,6 @@ def remove_sinais_monetarios(string):
     return valor
 
 
-def gera_json(fullpathfile, dicionario, indent):
-    """
-        Recebe o caminho completo do arquivo, um dicionário e
-        a indentação desejada no arquivo.
-        param: fullpathfile
-        param: dicionario
-        param: ident
-    """
-    with open(fullpathfile, 'a+', encoding='utf-8') as file:
-        json.dump(dicionario, file, indent=indent)
-
-
 if __name__ == '__main__':
 
     # Diretório padrão do projeto
@@ -78,14 +66,21 @@ if __name__ == '__main__':
                     item.find('h4',
                               {'class': 'pull-right price'}).text),
                 'Reviews': item.find('p', {'class': 'pull-right'}).text.strip(),
+                # Por não estar conseguindo capturar os atributos de dados do elemento
+                # 'p', optei por dar um find_all em todos os elementos span que continham
+                # as classificações dos produtos e retornar um len da lista.
+                'Rating': len(item.find_all('span', {'class': 'glyphicon glyphicon-star'})),
                 'Link': 'https://webscraper.io' + item.find('a').get('href')
             }
-
+            
+            print(len(item.find_all('span', {'class': 'glyphicon glyphicon-star'})))
             total_produtos.append(produto.copy())
             produto.clear()
 
-    # lista_ordenada:
+    # lista_ordenada pelo menor preço:
     lista_ordenada = sorted(
         total_produtos, key=itemgetter('Price'), reverse=False)
-    for produto in lista_ordenada:
-        gera_json(os.path.join(BASE_DIR, 'dados_produtos.json'), produto, 4)
+
+    # Gera json no diretório do projeto:
+    with open('dados_produtos.json', 'w') as file:
+        file.write(json.dumps(lista_ordenada, indent=4))
