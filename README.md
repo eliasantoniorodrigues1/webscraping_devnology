@@ -22,10 +22,11 @@ O objetivo inicial é coletar as informações em background sem a necessidade d
 
 Gerar um objeto contendo todos os produtos da página de **Laptops** e percorrer esse objeto coletando:
 
-- Título do produto
-- Descrição
-- Preço
-- Análises
+- Title
+- Description
+- Price
+- Review
+- Rating
 - Link para acesso direto a página
 
 Foram criadas algumas funções para facilitar a manutenção do processo e simplificar o código
